@@ -31,14 +31,14 @@ func usage() {
 }
 
 func main() {
+	fmt.Println(os.Getenv("GOFILE"))
+	fmt.Println(os.Getenv("GOPACKAGE"))
 	flag.Usage = usage
 	flag.Parse()
 	if len(*path) == 0 {
 		flag.Usage()
 		os.Exit(2)
 	}
-	fmt.Println(os.Getenv("GOFILE"))
-	fmt.Println(os.Getenv("GOPACKAGE"))
 
 	g := &Generator{}
 	g.ParsePackage(*path)
