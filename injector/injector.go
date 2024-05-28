@@ -31,6 +31,11 @@ func usage() {
 }
 
 func main() {
+	dir, err := os.Getwd()
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(dir)
 	fmt.Println(os.Getenv("GOFILE"))
 	fmt.Println(os.Getenv("GOPACKAGE"))
 	flag.Usage = usage
