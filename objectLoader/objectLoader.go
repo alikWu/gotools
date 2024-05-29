@@ -9,6 +9,8 @@ import (
 	"github.com/alikWu/gotools/objectLoader/internal/file"
 )
 
+//go:generate injector -path=./internal
+
 func main() {
 	var targetPackage string
 	var targetDir string

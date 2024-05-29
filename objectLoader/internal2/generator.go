@@ -7,8 +7,6 @@ import (
 	"strings"
 )
 
-//go:generate injector -path="./../internal"
-
 type Generator struct {
 	pkg *Package
 	buf bytes.Buffer
