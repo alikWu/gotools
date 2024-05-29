@@ -31,13 +31,6 @@ func usage() {
 }
 
 func main() {
-	dir, err := os.Getwd()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(dir)
-	fmt.Println(os.Getenv("GOFILE"))
-	fmt.Println(os.Getenv("GOPACKAGE"))
 	flag.Usage = usage
 	flag.Parse()
 	if len(*path) == 0 {
@@ -78,7 +71,7 @@ func (g *Generator) InjectAllTypes() {
 
 	g.print("var beanFactory = make(map[string]interface{})\n\n")
 
-	g.print("func Init() {\n")
+	g.print("func init() {\n")
 	for pkg, types := range pkgTypesMap {
 		for _, tn := range types {
 			g.print(fmt.Sprintf("\tbeanFactory[\"%s\"] = new(%s.%s)\n", pkg, pkg[strings.LastIndex(pkg, "/")+1:], tn))
